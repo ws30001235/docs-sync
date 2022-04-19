@@ -130,7 +130,7 @@ class ErrorBoundary extends Component {
 
 `createContext `是一个函数，它返回一个包含两个 React 组件的对象：一个提供者Provider和一个消费者。提供者是您确定 context 所在位置的方式。上下文仅在 Provider 内部可用。您只需执行一次。
 
-![image-20220418200825893](C:\Users\Opsuc\AppData\Roaming\Typora\typora-user-images\image-20220418200825893.png)
+![image-20220418200825893](..\pics\image-20220418200825893.png)
 
 
 

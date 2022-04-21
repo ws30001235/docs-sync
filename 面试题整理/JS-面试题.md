@@ -102,9 +102,13 @@ JS中每个对象都有一个私有属性[[prototype]]，通过[[prototype]]引�
 
 https://javascript.info/event-delegation
 
+如果我们有许多以类似方式处理的元素，那么就不必为每个元素分配一个处理程序 —— 而是将单个处理程序放在它们的共同祖先上。
+
 #### 7. 解释 AMD, CommonJS 和 ES Modules 的不同
 
 https://auth0.com/blog/javascript-module-systems-showdown/
+
+使用模块封装代码，可以防止变量的命名冲突，并且通过导入其他模块，可以简化开发
 
 #### 8. `instanceof` 的原理是什么？和 `typeof`的区别是什么？
 
@@ -115,3 +119,66 @@ object instanceof constructor
 `instanceof `操作符判断构造函数的`prototype`属性是否出现在该实例对象的原型链中
 
 `typeof` 操作符可以判断原始值的类型，以及function对象和其他对象，`null`得到的结果是`object`
+
+#### 9. 解释 `new` 操作符
+
+`new` 操作符用于创建对象的实例。
+
+当一个函数被使用 `new` 操作符执行时，它按照以下步骤：
+
+1. 一个新的空对象被创建并分配给 `this`。
+2. 将对象的原型([[prototype]])设置为该构造函数的原型对象
+3. 函数体执行。通常它会修改 `this`，为其添加新的属性。
+4. 如果没有返回显式对象即返回 `this` 的值。
+
+换句话说，`new User(...)` 做的就是类似的事情：
+
+```javascript
+function User(name) {
+  // this = {};（隐式创建）
+
+  // 添加属性到 this
+  this.name = name;
+  this.isAdmin = false;
+
+  // return this;（隐式返回）
+}
+```
+
+如果没有使用 `new` 运算符， **构造函数会像其他的常规函数一样被调用，** 并*不会创建一个对象**。***在这种情况下， `this` 的指向也是不一样的。
+
+#### 10. 解释宏任务和微任务
+
+宏任务 - 事件循环中宏任务队列(task queue) 中的任务。`setTimeout`, `setInterval`, `requestAnimationFrame`, Web APIs，它们的回调函数放入宏任务队列中。
+
+微任务 - `Promises`, `process.nextTick()`, `queueMicrotask`, `MutationObserver`, `promise.then()/catch()/finally()`中的回调函数。
+
+微任务具有更高的优先级，只有当前微任务队列为空的时候才会去执行宏任务队列中的任务。
+
+###### 事件循环算法
+
+1. 从 **宏任务** 队列（例如 “script”）中出队（dequeue）并执行最早的任务。
+2. 执行所有微任务：
+   - 当微任务队列非空时：
+     - 出队（dequeue）并执行最早的微任务。
+3. 如果有变更，则将变更渲染出来。
+4. 如果宏任务队列为空，则休眠直到出现宏任务。
+5. 转到步骤 1。
+
+#### 11. JS中的垃圾回收机制
+
+https://javascript.info/garbage-collection
+
+Please notice `reachable` is different from `referenced`.
+
+#### 12. 什么是内存泄露，如何debug发现以及预防？
+
+You need to answer the common scenarios where [memory leak](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management) happens, together with the explanation of 11.垃圾回收机制
+
+And then tell the interviewer how to prevent it & [debug it with Chrome Dev Tool](https://developers.google.com/web/tools/chrome-devtools/memory-problems).
+
+#### 13. 解释浏览器和Node中的事件循环，有什么不同？
+
+[Event Loop in Browser](https://javascript.info/event-loop) and [Event loop in Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/).
+
+#### 14. 什么是 WeakSet, WeakMap

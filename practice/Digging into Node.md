@@ -119,3 +119,55 @@ var targetStream = fs.createWriteStream(OUTFILE); // OUTFILE is output file path
 outStream.pipe(targetStream);
 ```
 
+###### 用zlib对gz进行解压缩/压缩
+
+```javascript
+import zlib from "zlib";
+
+// in the process function
+// uncompress a gzip stream
+  if (args.uncompress) {
+    let gunzipStream = zlib.createGunzip();
+    outStream = outStream.pipe(gunzipStream);
+  }
+// compress a stream
+  if (args.compress) {
+    let gzipStream = zlib.createGzip();
+    outStream = outStream.pipe(gzipStream);
+    OUTFILE = `${OUTFILE}.gz`;
+  }
+```
+
+###### 所有stream操作是异步的，那么如何在目前stream程序*之后*运行一个程序
+
+给`processFile`函数添加`async`关键字
+
+并添加：` await streamComplete(outStream);`
+
+
+
+设置这个函数，通过监听stream文件的`end`事件
+
+```javascript
+function streamComplete(stream) {
+  return new Promise(function c(resolve) {
+    stream.on("end", resolve);
+  });
+}
+```
+
+调用函数时
+
+```javascript
+processFile(stream)
+    .then(function () {
+      console.log("Complete");
+    })
+    .catch(error);
+```
+
+---
+
+### Database
+
+`util.promisify(func)`将期望以callback作为参数的func转换为返回promise的函数

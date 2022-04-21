@@ -1,4 +1,4 @@
-# 浏览器-面试题
+# 浏览器, WebAPI-面试题
 
 ### 1.浏览器跨域和`CORS`
 
@@ -45,6 +45,8 @@
 
 
 - 什么是重排重绘
+
+  https://blog.usejournal.com/what-the-heck-is-repaint-and-reflow-in-the-browser-b2d0fb980c08
 
   ![image](https://user-images.githubusercontent.com/17002181/126033732-d5002255-1c88-4dee-9371-da166aacdca9.png)
 
@@ -246,3 +248,18 @@ fragment 有以下特点：
 **缺点**
 
 - 不恰当的缓存设置可能会导致资源更新不及时，导致用户获取信息滞后。
+
+### 8. 如何监控网页崩溃
+
+https://medium.com/@JackPu/how-to-check-browser-crash-via-javascript-fa7d5af5e80b
+
+### 9. Cookie localStorage sessionStorage
+
+https://scotch.io/@PratyushB/local-storage-vs-session-storage-vs-cookie
+
+### 10. 什么是 Web Worker？ 什么是Service Worker？
+
+https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers
+
+https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
+

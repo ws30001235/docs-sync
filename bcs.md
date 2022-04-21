@@ -1,0 +1,1 @@
+Finding the right value of nonce that satisfies the block hash to have set number of leading zeros. what is mining.

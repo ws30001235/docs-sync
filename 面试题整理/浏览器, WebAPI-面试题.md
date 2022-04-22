@@ -263,3 +263,42 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_worke
 
 https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
 
+#### 11. 不同图片格式的区别，各有什么优缺点
+
+主流格式：PNG JPG GIF WebP
+
+新格式AVIF 
+
+https://wpmudev.com/blog/best-image-formats-png-vs-jpg-svg-gif-webp/
+
+#### 12. 如何实现图片懒加载？
+
+原生：<img loading=lazy> defers offscreen images until the user scrolls near them.
+
+其他方法的实质是什么
+
+[intersection observer api](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) ？
+
+#### 13. 什么是进程，什么是线程
+
+https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread/19518207#19518207
+
+#### 14. 客户端路由是怎么工作的
+
+有三种路由，BrowserRouter, HashRouter, MemoryRouter，它们的区别是什么，是如何工作的。
+
+
+
+To best understand this, you are suggested to write your own client-side router, with
+
+1. [pushState](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) and [popstate event](https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event)
+2. [onhashchange](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onhashchange)
+
+#### 15. script 标签中 async 和 defer 属性的作用和区别
+
+（1）脚本没有 defer 或 async，浏览器会立即加载并执行指定的脚本，也就是说不等待后续载入的文档元素，读到就加载并执行。
+
+（2）defer 属性表示延迟执行引入的 JavaScript，即这段 JavaScript 加载时 HTML 并未停止解析，这两个过程是并行的。当整个 document 解析完毕后再执行脚本文件，在 DOMContentLoaded 事件触发之前完成。多个脚本按顺序执行。
+
+（3）async 属性表示异步执行引入的 JavaScript，与 defer 的区别在于，如果已经加载好，就会开始执行，也就是说它的执行仍然会阻塞文档的解析，只是它的加载过程不会阻塞。多个脚本的执行顺序无法保证。
+

@@ -29,3 +29,23 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_format
 https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 
 #### 4. 什么是伪类，什么是伪元素
+
+#### 5. 在CSS中使用@import的优缺点是什么
+
+https://www.keycdn.com/blog/css-import
+
+#### 6. 如何创建一个具有固定比例的盒子
+
+responsive
+
+#### 7. 什么是 DPR， CSS像素和设备像素分别是什么
+
+CSS像素
+
+设备像素是设备具有的像素点。
+
+**DPR = 设备像素/CSS像素**
+
+![img](https://www.minidiy.com/upload/20201216_15242135.png)
+
+如图右是DPR为2的retina屏幕，需要4个设备像素显示一个CSS像素。

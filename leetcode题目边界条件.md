@@ -2,6 +2,14 @@
 
 考虑32位有符号位整数，数值范围是[−2^31, 2^31−1]。即最小值的绝对值是等于最大值+1的。`leetcode29`中需要考虑`min/(-1)`的边界情况。
 
+#### 二分搜索中设置mid
+
+First, we will find the `middle` of `start` and `end`. An easy way to find the middle would be: middle=(start+end)/2. For **Java and C++**, this equation will work for most cases, but when `start` or `end` is large, this equation will give us the wrong result due to integer overflow. Imagine that `end` is equal to the maximum range of an integer (e.g. for Java: `int end = Integer.MAX_VALUE`). Now adding any positive number to `end` will result in an integer overflow. Since we need to add both the numbers first to evaluate our equation, an overflow might occur. The safest way to find the middle of two numbers without getting an overflow is as follows:
+
+```
+     middle  = start + (end-start)/2
+```
+
 
 
 ## 运算符，API
@@ -15,6 +23,14 @@
 - `<<` 按位左移
 - `>>` 按位右移
 - `>>>` 按位无符号右移
+
+
+
+###### 异或的性质
+
+当 a 是偶数时  a ^ 1 = a + 1;
+
+当 a 是奇数时  a ^ 1 = a - 1;
 
 
 

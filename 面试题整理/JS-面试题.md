@@ -70,6 +70,8 @@
 1. `finally` 处理程序（handler）没有参数。在 `finally` 中，我们不知道 promise 是否成功。没关系，因为我们的任务通常是执行“常规”的定稿程序（finalizing procedures）。
 2. `finally` 处理程序将之前的结果和 error 传递给下一个处理程序。
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
 #### 3. 什么是原型继承，有什么用
 
 JS中每个对象都有一个私有属性[[prototype]]，通过[[prototype]]引用的对象是原型。通过调用构造函数生成的对象的[[prototype]]指向构造函数的prototype属性，也称为原型对象。如果我们想要读取对象的一个属性或调用一个方法，并且它不存在于当前对象中，那么JS就会尝试在原型对象中查找。然后，在原型对象的原型对象中查找，直到找到匹配的属性或方法或者当前查找对象的原型对象是null，null没有原型对象，到达原型链的末尾。
@@ -182,3 +184,31 @@ And then tell the interviewer how to prevent it & [debug it with Chrome Dev Tool
 [Event Loop in Browser](https://javascript.info/event-loop) and [Event loop in Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/).
 
 #### 14. 什么是 WeakSet, WeakMap
+
+#### 15.什么是类数组对象？
+
+对象中元素具有索引，并且对象具有length属性，则为类数组对象。可以将类数组对象通过Array.from()方法转换为数组。可以通过call或apply，使得类数组对象使用数组方法，如
+
+```javascript
+Array.prototype.forEach.call(arraylike, function(item){
+    console.log(item);
+});
+```
+
+#### 16. setTimeout 与 setInterval 的区别
+
+https://javascript.info/settimeout-setinterval
+
+用setTimeout实现setInterval时，两者有很大的差异。
+
+#### 17. for...in 和 Object.keys()用于遍历对象属性的区别
+
+`for...in`语句迭代一个对象的除[Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)以外的[可枚举](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)属性，包括继承的可枚举属性。
+
+`Object.keys()`方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。也不能获取Symbol类型的属性。
+
+#### 18. 什么是 JWT (JSON Web Token)?
+
+https://jwt.io/introduction/
+
+用于认证
